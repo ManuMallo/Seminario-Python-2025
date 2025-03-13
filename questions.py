@@ -24,8 +24,9 @@ answers = [
 correct_answers_index = [1, 2, 0, 3, 1]
 #inicializa el puntaje
 user_score = 0
-# El usuario deberá contestar 3 preguntas
+# Se generan las preguntas
 questions_to_ask = random.sample(list(zip(questions, answers, correct_answers_index)), k=3)
+# El usuario deberá contestar 3 preguntas
 for que, opt, ans in questions_to_ask:
     # Se muestra la pregunta y las respuestas posibles
     print(que)
@@ -34,10 +35,11 @@ for que, opt, ans in questions_to_ask:
     # El usuario tiene 2 intentos para responder correctamente
     for intento in range(2):
         user_answer = input("Respuesta: ")
-        #se verifica si la respuesta es valida
+        #Se verifica si la respuesta es valida
         if (user_answer in ["1", "2", "3", "4"]):
             user_answer = int(user_answer) - 1
         else:
+            print("Respuesta no válida")
             exit(1)
         # Se verifica si la respuesta es correcta y se aumenta el puntaje
         if user_answer == ans:
@@ -46,11 +48,11 @@ for que, opt, ans in questions_to_ask:
             break
         else:
             # Si el usuario no responde correctamente después de 2 intentos,
-            # se muestra la respuesta correcta y se decrementa el puntaje
+            # Se muestra la respuesta correcta y se decrementa el puntaje
             print("Incorrecto. La respuesta correcta es:")
             print(opt[ans])
             user_score-=0.5
-#se imprime el puntaje
+#Se imprime el puntaje
 print(f"tu puntaje fue {user_score}")
 # Se imprime un blanco al final de la pregunta
 print()
