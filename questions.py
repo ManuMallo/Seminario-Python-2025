@@ -32,7 +32,12 @@ for _ in range(3):
         print(f"{i + 1}. {answer}")
     # El usuario tiene 2 intentos para responder correctamente
     for intento in range(2):
-        user_answer = int(input("Respuesta: ")) - 1
+        user_answer = input("Respuesta: ")
+        #se verifica si la respuesta es valida
+        if (user_answer in ["1", "2", "3", "4"]):
+            user_answer = int(user_answer) - 1
+        else:
+            exit(1)
         # Se verifica si la respuesta es correcta
         if user_answer == correct_answers_index[question_index]:
             print("¡Correcto!")
